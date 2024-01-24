@@ -1,7 +1,7 @@
 <?php require($_SERVER['DOCUMENT_ROOT'].'/functions.php');?>
 <html>
   <head>
-    <title>iewojHImgforjewij</title>
+    <title>hello</title>
   </head
   <body>
     <?php echo '<p>HI World testing</p>'; 
