@@ -1,8 +1,8 @@
 <?php
   //Server: sql3.freemysqlhosting.net
-  //Name: sql3646748
-  //Username: sql3646748
-  //Password: z4IyGxX9kz
+  //Name: sql3680033
+  //Username: sql3680033
+  //Password: uuImpGvtiz
   //Port number: xxxxxxxxxx
 
 $host = 'sql3.freemysqlhosting.net';
