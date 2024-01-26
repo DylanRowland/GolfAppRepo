@@ -6,9 +6,9 @@
   //Port number: xxxxxxxxxx
 
 $host = 'sql3.freemysqlhosting.net';
-$db   = 'sql3646748';
-$user = 'sql3646748';
-$pass = 'z4IyGxX9kz';
+$db   = 'sql3680033';
+$user = 'sql3680033';
+$pass = 'uuImpGvtiz';
 $charset = 'utf8mb4'; // This is a good charset to use for MySQL
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
