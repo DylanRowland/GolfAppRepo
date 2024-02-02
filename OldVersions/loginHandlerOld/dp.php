@@ -5,10 +5,10 @@
   //Password: uuImpGvtiz
   //Port number: xxxxxxxxxx
 
-$host = 'srv1246.hstgr.io';
-$db   = 'u411832981_golf';
-$user = 'u411832981_student';
-$pass = 'golfStudent2024!';
+$host = 'sql3.freemysqlhosting.net';
+$db   = 'sql3680033';
+$user = 'sql3680033';
+$pass = 'uuImpGvtiz';
 $charset = 'utf8mb4'; // This is a good charset to use for MySQL
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

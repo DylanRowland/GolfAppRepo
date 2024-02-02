@@ -12,8 +12,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/resources/style.css" rel="stylesheet" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/template/css/styles.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Responsive navbar-->
@@ -52,6 +51,10 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
+          <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+          <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <!------ Include the above in your HEAD tag ---------->
 
           <div class="wrapper fadeInDown">
             <div id="formContent">
@@ -101,11 +104,9 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
                               <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
                           </div>
                       </footer>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="resources/scripts.js"></script>
+        <script src="js/scripts.js"></script>
     </body>
 </html>
