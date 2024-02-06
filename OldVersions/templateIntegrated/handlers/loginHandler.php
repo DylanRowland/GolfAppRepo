@@ -15,7 +15,7 @@
         // Username and password match, allow access
         // Redirect to the user's dashboard or homepage
 
-        $_SESSION['user']['uid'] = $user['uid'];
+
         $_SESSION['user']['username'] = $user['username'];
         $_SESSION['user']['password'] = $user['password'];
         $_SESSION['user']['accountStatus'] = $user['accountStatus'];

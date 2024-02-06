@@ -6,10 +6,10 @@ function navTEST() {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/template/template.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/handlers/profileHandler.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Courses.php">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/template/profile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/template/Courses.php">Courses</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/template/loginTemplate.php">Login</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/template/logout.php">Logout</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/template/stats.php">Stats</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/friends/friendsList.php">Friends</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="#">Link</a></li> -->
