@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 
 require($_SERVER['DOCUMENT_ROOT'] . '/functions.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
+verifyLogin();
 ?>
 
 <!DOCTYPE html>

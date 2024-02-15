@@ -1,6 +1,6 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php'); 
 
-
+verifyLogin();
 
 
 // Query the database for the user's credentials

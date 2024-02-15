@@ -1,6 +1,6 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php'); 
 require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php'); 
-//accessControll() ?>
+verifyLogin(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
