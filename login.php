@@ -64,7 +64,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
               </div>
 <hr>
               <!-- Login Form -->
-              <form action="/handlers/loginHandler.php" method="post">
+              <form action="/landingPage.php" method="post">
                 <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
                 <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
