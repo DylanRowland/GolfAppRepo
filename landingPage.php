@@ -30,7 +30,6 @@ verifyLogin(); ?>
         </div>
     </header>
 
-        landingPage.php
 
               <!-- Content section-->
               <section class="py-3"> <!-- Reduced padding from py-5 to py-3 -->

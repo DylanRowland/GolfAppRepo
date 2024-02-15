@@ -22,7 +22,7 @@
         $_SESSION['user']['email'] = $user['email'];
         $_SESSION['user']['phone'] = $user['phone'];
       
-        header('Location: /profile.php');
+        header('Location: /landingPage.php');
         exit();
     } else {
         // Username and password do not match
