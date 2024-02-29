@@ -16,11 +16,6 @@
         // Redirect to the user's dashboard or homepage
 
         $_SESSION['user']['uid'] = $user['uid'];
-        $_SESSION['user']['username'] = $user['username'];
-        $_SESSION['user']['password'] = $user['password'];
-        $_SESSION['user']['accountStatus'] = $user['accountStatus'];
-        $_SESSION['user']['email'] = $user['email'];
-        $_SESSION['user']['phone'] = $user['phone'];
       
         header('Location: /landingPage.php');
         exit();

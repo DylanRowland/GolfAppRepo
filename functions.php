@@ -19,4 +19,11 @@ function verifyLogin(){
   }
 }
 
+
+function resetPagedata(){
+  if(isset($_SESSION['pageData'])){
+    unset($_SESSION['pageData']);
+  }
+}
+
 ?>

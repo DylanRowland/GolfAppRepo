@@ -1,6 +1,6 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php'); 
-
 verifyLogin();
+resetPagedata();
 
 
 // Query the database for the user's credentials
@@ -10,51 +10,29 @@ $profile = $stmt->fetch();
 
 
 // Query the database for the user's credentials
-$stmt = $pdo->prepare("SELECT * FROM GA_rounds WHERE userId = :userId");
-$stmt->execute(['userId' => $_SESSION['user']['uid']]);
-$rounds = $stmt->fetch();
-
-// Query the database for the user's credentials
-$stmt = $pdo->prepare("SELECT * FROM GA_courses WHERE courseID = :courseID");
-$stmt->execute(['courseID' => $rounds['courseID']]);
-$courses = $stmt->fetch();
+$stmt = $pdo->prepare("SELECT * FROM GA_users WHERE uid = :uid");
+$stmt->execute(['uid' => $_SESSION['user']['uid']]);
+$user = $stmt->fetch();
 
 
 
-$_SESSION['profile']['fname'] = $profile['first_name'];
-$_SESSION['profile']['Lname'] = $profile['last_name'];
-$_SESSION['profile']['pfp'] = $profile['profilePic'];
-$_SESSION['profile']['bio'] = $profile['bio'];
 
-$_SESSION['rounds']['datePlayed'] = $rounds['datePlayed'];
-$_SESSION['rounds']['totalScore'] = $rounds['totalScore'];
-$_SESSION['rounds']['holesPlayed'] = $rounds['holesPlayed'];
+// USER START$_SESSION['pageData']['username'] = $user['username'];
+$_SESSION['pageData']['accountStatus'] = $user['accountStatus'];
+$_SESSION['pageData']['email'] = $user['email'];
+$_SESSION['pageData']['phone'] = $user['phone'];
+$_SESSION['pageData']['username'] = $user['username'];
+$_SESSION['pageData']['password'] = $user['password'];
+// USER END
 
-$_SESSION['courses']['courseMedia'] = $courses['courseMedia'];
-$_SESSION['courses']['courseName'] = $courses['courseName'];
-$_SESSION['courses']['scorecard'] = $courses['scorecard'];
-$_SESSION['courses']['courseLogo'] = $courses['courseLogo'];
-$_SESSION['courses']['courseDescription'] = $courses['courseDescription'];
-$_SESSION['courses']['courseLocation'] = $courses['courseLocation'];
-$_SESSION['courses']['totalPar'] = $courses['totalPar'];
+// USER START
+$_SESSION['pageData']['fname'] = $profile['fName'];
+$_SESSION['pageData']['Lname'] = $profile['lName'];
+$_SESSION['pageData']['pfp'] = $profile['profilePic'];
+$_SESSION['pageData']['location'] = $profile['location'];
+$_SESSION['pageData']['bio'] = $profile['bio'];
+// USER END
 
-
-// echo '<pre>';
-// var_dump($_SESSION);
-// echo '</pre>';
-
-// echo '<pre>';
-// var_dump($profile);
-// echo '</pre>';
-
-// echo '<pre>';
-// var_dump($rounds);
-// echo '</pre>';
-
-
-// echo '<pre>';
-// var_dump($courses);
-// echo '</pre>';
 
 
 header('Location: /profile.php');
