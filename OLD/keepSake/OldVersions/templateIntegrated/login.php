@@ -12,7 +12,8 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/template/css/styles.css" rel="stylesheet" />
+    <link href="/resources/style.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
     <!-- Responsive navbar-->
@@ -38,23 +39,19 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
             }
             ?>
             <!-- user profile pic ENDS here-->
-              <h1 class="text-white fs-3 fw-bolder bg-dark d-inline p-2 rounded">Profile</h1><br>
-              <br>
-              <p class="text-white-50 mb-0 bg-dark d-inline p-2 rounded">Your profile</p>
+              <h1 class="text-white fs-3 fw-bolder bg-dark d-inline p-2 rounded">Login Form</h1>
+               <br></br>
+              <p class="text-white-50 mb-0 bg-dark d-inline p-2 rounded">Log into your account</p>
         </div>
     </header>
 
-
+  
 
         <!-- Content section-->
         <section class="py-5">
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-          <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-          <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-          <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-          <!------ Include the above in your HEAD tag ---------->
 
           <div class="wrapper fadeInDown">
             <div id="formContent">
@@ -63,19 +60,19 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
               <!-- Icon -->
               <div class="fadeIn first">
                 <br>
-                <p>Profile</p>
+                <p>Login</p>
               </div>
-
+<hr>
               <!-- Login Form -->
-              <form>
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+              <form action="/handlers/loginHandler.php" method="post">
+                <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
               </form>
 
               <!-- Redirect user to the create a profile page -->
               <div id="formFooter">
-                <a class="underlineHover" href="/template/EditProfile.php">Edit profile</a>
+                <a class="underlineHover" href="CreateUser.php">Dont have an account?</a>
               </div>
 
             </div>
@@ -104,9 +101,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
                               <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
                           </div>
                       </footer>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="resources/scripts.js"></script>
     </body>
 </html>

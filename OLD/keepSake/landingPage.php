@@ -1,7 +1,6 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php'); 
 require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php'); 
-verifyLogin(); 
-resetPagedata()?>
+verifyLogin(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

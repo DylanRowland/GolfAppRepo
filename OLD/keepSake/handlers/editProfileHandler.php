@@ -1,4 +1,5 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php'); 
+
 verifyLogin();
 
 $uid = $_SESSION['user']['uid']; // all
