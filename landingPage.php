@@ -1,7 +1,8 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php'); 
 require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php'); 
 verifyLogin(); 
-resetPagedata()?>
+resetPagedata();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +37,11 @@ resetPagedata()?>
               <section class="py-3"> <!-- Reduced padding from py-5 to py-3 -->
                   <div class="container my-5">
                       <div class="row">
-                          <!-- Left column for Features -->
+                        <center>
+                          <form action="/handlers/coursesHandler.php">
+                        <button type="submit" class="btn btn-primary btn-lg">Enter New Game</button>
+                            </form>
+                          </center>
                           <div class="col-lg-6">
                               <h2>Features</h2>
                             <ul>

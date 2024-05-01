@@ -7,8 +7,8 @@ function navTEST() {
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/landingPage.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/handlers/profileHandler.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Courses.php">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/template/loginTemplate.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="handlers/CoursesHandler2.php">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/handlers/viewAllUsersHandler.php">View All Users</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout.php">Logout</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/handlers/statshandler.php">Stats</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/friends/friendsList.php">Friends</a></li>
@@ -48,4 +48,5 @@ function messageLogic() {
       echo '</div>';
     }
 }
+
 ?>

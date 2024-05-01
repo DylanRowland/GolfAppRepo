@@ -1,8 +1,11 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/functions.php'); 
-require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php'); 
-//accessControll() ?>
-<!DOCTYPE html>
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require($_SERVER['DOCUMENT_ROOT'] . '/functions.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
+?>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -99,3 +102,4 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
     </body>
 </html>
 
+    

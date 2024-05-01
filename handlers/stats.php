@@ -45,10 +45,6 @@ $averageFairway =  $_SESSION['pageData']['avgFairway'];
         </div>
     </header>
 
-  <div id="dataContainer">
-      <!-- Data will be displayed here -->
-  </div>
-
     <!-- Content section -->
     <section class="py-5">
         <div class="container my-5">
@@ -103,12 +99,6 @@ $averageFairway =  $_SESSION['pageData']['avgFairway'];
         </div>
     </section>
 
-  <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          goBackToOldData();
-      });
-  </script>
-
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
@@ -118,7 +108,6 @@ $averageFairway =  $_SESSION['pageData']['avgFairway'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS -->
     <script src="js/scripts.js"></script>
-    <script src="/resources/script.js"></script>
 </body>
 
 

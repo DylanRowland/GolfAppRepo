@@ -26,6 +26,10 @@ function resetPagedata(){
   }
 }
 
+function updateInformation() {
+    // Your code to update information goes here
+    $_SESSION['last_updated'] = time(); // Example: Store the last update time in session
+}
 
 
 ?>

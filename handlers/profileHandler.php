@@ -35,6 +35,8 @@ $_SESSION['pageData']['bio'] = $profile['bio'];
 
 
 
+
+
 header('Location: /profile.php');
 exit();
 
