@@ -1,0 +1,194 @@
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php'); 
+verifyLogin();
+
+// Query the database for the courses
+$stmt = $pdo->prepare("SELECT * FROM GA_courses");
+$stmt->execute();
+$courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Initialize an empty array to store the top 5 users for each course
+$topUsersPerCourse = [];
+
+// Query the database to get the top 5 users for each course
+foreach ($courses as $course) {
+    $courseID = $course['courseID'];
+
+    // For 9-hole rounds
+    $stmt = $pdo->prepare("
+        SELECT 
+            r.userID, 
+            r.courseID, 
+            u.username, 
+            r.totalScore, 
+            r.numberOfHoles
+        FROM 
+            GA_rounds r
+        JOIN 
+            GA_users u ON r.userID = u.uid
+        WHERE 
+            r.courseID = :courseID AND r.numberOfHoles >= 9 AND r.numberOfHoles < 18 AND r.totalScore > 0
+        ORDER BY 
+            r.totalScore ASC
+        LIMIT 
+            5
+    ");
+    $stmt->execute(['courseID' => $courseID]);
+    $topUsersPerCourse['9_holes'][$courseID] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // For 18-hole rounds
+    $stmt = $pdo->prepare("
+        SELECT 
+            r.userID, 
+            r.courseID, 
+            u.username, 
+            r.totalScore, 
+            r.numberOfHoles
+        FROM 
+            GA_rounds r
+        JOIN 
+            GA_users u ON r.userID = u.uid
+        WHERE 
+            r.courseID = :courseID AND r.numberOfHoles >= 18 AND r.totalScore > 0
+        ORDER BY 
+            r.totalScore ASC
+        LIMIT 
+            5
+    ");
+    $stmt->execute(['courseID' => $courseID]);
+    $topUsersPerCourse['18_holes'][$courseID] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Leaderboard</title>
+     <link href="/startbootstrap-full-width-pics-gh-pages/css/styles.css" rel="stylesheet" />
+      <link href="/resources/style.css" rel="stylesheet" />
+
+    <?php
+        navTEST();
+    ?>
+    
+    <style>
+        /* Split the screen into two columns */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        /* Style for each column */
+        .column {
+            width: 48%; /* Adjust the width as needed */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Golf Leaderboard</h1>
+
+<form method="post">
+    <label for="course-select">Select Course:</label>
+    <select name="course-select" id="course-select">
+        <option value="all">All Courses</option>
+        <?php foreach ($courses as $course): ?>
+            <option value="<?php echo $course['courseID']; ?>"><?php echo $course['courseName']; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <input type="submit" value="Show">
+</form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $selectedCourse = $_POST['course-select'];
+    if ($selectedCourse === 'all') {
+        $filteredStats = $topUsersPerCourse;
+    } else {
+        $filteredStats = [
+            '9_holes' => [$selectedCourse => $topUsersPerCourse['9_holes'][$selectedCourse]],
+            '18_holes' => [$selectedCourse => $topUsersPerCourse['18_holes'][$selectedCourse]]
+        ];
+    }
+} else {
+    // By default, show stats for all courses
+    $filteredStats = $topUsersPerCourse;
+}
+?>
+
+<div class="container">
+    <div class="column">
+        <h2>9-Hole Scorecard</h2>
+        <?php foreach ($filteredStats['9_holes'] as $courseID => $users): ?>
+            <?php if (!empty($users)): ?>
+                <h3><?php echo $courses[array_search($courseID, array_column($courses, 'courseID'))]['courseName']; ?></h3>
+                <table>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Total Score</th>
+                        <th>Number of Holes</th>
+                    </tr>
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?php echo $user['username']; ?></td>
+                            <td><?php echo $user['totalScore']; ?></td>
+                            <td><?php echo $user['numberOfHoles']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <div class="column">
+        <h2>18-Hole Scorecard</h2>
+        <?php foreach ($filteredStats['18_holes'] as $courseID => $users): ?>
+            <?php if (!empty($users)): ?>
+                <h3><?php echo $courses[array_search($courseID, array_column($courses, 'courseID'))]['courseName']; ?></h3>
+                <table>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Total Score</th>
+                        <th>Number of Holes</th>
+                    </tr>
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?php echo $user['username']; ?></td>
+                            <td><?php echo $user['totalScore']; ?></td>
+                            <td><?php echo $user['numberOfHoles']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+</body>
+</html>

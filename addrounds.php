@@ -1,5 +1,4 @@
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/functions.php');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
 // accessControll()
 
@@ -44,30 +43,31 @@ if ($selectedCourse == 'course1') {
     <link href="/template/css/styles.css" rel="stylesheet" />
     <!-- Bootstrap core CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /* Remove white gap at the top */
+        body {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        /* Adjust header margin if needed */
+        header {
+            margin-top: 0 !important;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Responsive navbar-->
-    <?php
-    navTEST();
-    ?>
-    <header class="py-5 bg-image-full"
-        style="background-image: url('/template/imagefolder/SunsetCourse.png'); margin-top: 55px; background-size: cover;">
+    <?php navTEST(); ?>
+    <header class="py-5 bg-image-full" style="background-image: url('/template/imagefolder/SunsetCourse.png'); background-size: cover;">
         <div class="text-center my-5">
             <div class="text-center my-5">
                 <!-- User profile picture starts here -->
                 <?php
-                // Check if the user array and its keys are defined
                 if (isset($_SESSION['user']['profile']['picURL'])) {
                     $profilePicURL = $_SESSION['user']['profile']['picURL'];
-
-                    if ($profilePicURL !== null) {
-                        // If profile picture URL is not null, display the user's profile picture
-                        echo '<img class="img-fluid rounded-circle mb-4" src="' . $profilePicURL . '" alt="User Profile Picture" />';
-                    } else {
-                        // If profile picture URL is null, display the default image
-                        echo '<img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="Default Profile Picture" />';
-                    }
+                    $profilePic = ($profilePicURL !== null) ? $profilePicURL : 'https://dummyimage.com/150x150/6c757d/dee2e6.jpg';
+                    echo '<img class="img-fluid rounded-circle mb-4" src="' . $profilePic . '" alt="User Profile Picture" />';
                 }
                 ?>
                 <!-- user profile pic ENDS here-->
@@ -82,50 +82,45 @@ if ($selectedCourse == 'course1') {
             <div class="col-md-6">
                 <div class="form-container">
                     <form method="post" action="/handlers/roundsHandler.php">
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="courses">Courses:</label>
-                            <!-- Replace the input field with a dropdown box -->
                             <select id="courses" name="courses" class="form-control">
-                                <?php foreach ($_SESSION['pageData'] as $course): ?>
-                                  <option value="<?php echo $course['courseID']; ?>"><?php echo $course['courseName']; ?></option>
-                                <?php endforeach; ?>
+                                <?php
+                                if (isset($_SESSION['pageData']) && !empty($_SESSION['pageData'])) {
+                                    foreach ($_SESSION['pageData'] as $course) {
+                                        echo '<option value="' . $course['courseID'] . '">' . $course['courseName'] . '</option>';
+                                    }
+                                } else {
+                                    echo '<option value="">No courses available</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="datePlayed">Date played:</label>
+                            <input type="date" id="datePlayed" name="datePlayed" class="form-control">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="holesPlayed">Holes Played:</label>
+                            <select id="holesPlayed" name="holesPlayed" class="form-control">
+                                <option value="" selected disabled hidden>Select Number of Holes Played</option>
+                                <option value="9">9 Holes</option>
+                                <option value="18">18 Holes</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="datePlayed">Date played: </label>
-                            <!-- Change the input type to "date" for an actual date -->
-                            <input type="date" id="datePlayed" name="datePlayed" class="form-control">
-
-                          <label for="holesPlayed" class="mt-3">Holes Played:</label>
-                          <br>
-                          <!-- Use a dropdown (select) instead of an input field -->
-                          <select id="holesPlayed" name="holesPlayed" class="form-control">
-                              <option value="" selected disabled hidden>Select Number of Holes Played</option>
-                              <option value="9">9 Holes</option>
-                              <option value="18">18 Holes</option>
-                          </select>
-                          <br>
-
-
-                            
-                            <br>
-                         
-                        </div>
-
-                        <div class="form-group">
-                            <!-- Replace the input field with a submit button -->
                             <input type="submit" value="Submit" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-6">
-                <!-- Course media section -->
                 <div class="course-media mt-3">
                     <h3 class="text-center mb-3">Course Media</h3>
                     <?php
-                    // Display the course media based on the selected course
                     if ($courseMediaPath) {
                         echo '<img src="' . $courseMediaPath . '" alt="Course Media" class="img-fluid" width="' . $imageWidth . '" height="' . $imageHeight . '">';
                     }
@@ -134,3 +129,10 @@ if ($selectedCourse == 'course1') {
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap core JavaScript and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

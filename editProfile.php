@@ -79,14 +79,14 @@ require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
                         <div class="input-group-prepend">
                         <span class="input-group-text" name="fname" id="basic-addon1">First Name</span>
                         </div>
-                        <input type="*" name="fname" class="form-control" aria-label="fName" aria-describedby="basic-addon1" value="<?php echo $_SESSION['pageData']['fname']; ?>">
+                        <input type="*" name="fname" class="form-control" aria-label="fName" aria-describedby="basic-addon1" value="<?php echo $_SESSION['pageData']['fName']; ?>">
                       </div>
 
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" name="lname" id="basic-addon1">Last Name</span>
+                        <span class="input-group-text" name="lName" id="basic-addon1">Last Name</span>
                         </div>
-                        <input type="*" name="lname" class="form-control" aria-label="lName" aria-describedby="basic-addon1" value="<?php echo $_SESSION['pageData']['Lname']; ?>">
+                        <input type="*" name="lname" class="form-control" aria-label="lName" aria-describedby="basic-addon1" value="<?php echo $_SESSION['pageData']['lName']; ?>">
                       </div>
 
                       <div class="input-group mb-3">

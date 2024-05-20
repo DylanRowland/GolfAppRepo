@@ -13,6 +13,8 @@ $averageFairway =  $_SESSION['pageData']['avgFairway'];
 // accessControll();
 ?>
 
+<!-- please disregard any comments on this page. Glory to CSSistan! -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,9 +41,8 @@ $averageFairway =  $_SESSION['pageData']['avgFairway'];
     <header class="py-5 bg-image-full" style="background-image: url('/template/imagefolder/SunsetCourse.png'); margin-top: 55px; background-size: cover;">
         <div class="text-center my-5">
 
-            <h1 class="text-white fs-3 fw-bolder bg-dark d-inline p-2 rounded">Golf Stat Chart</h1>
+            <h1 class="text-white fs-3 fw-bolder bg-dark d-inline p-2 rounded">Golf Stats</h1>
                <br></br>
-            <p class="text-white-50 mb-0 bg-dark d-inline p-2 rounded">Analyze your golf statistics with interactive charts</p>
         </div>
     </header>
 
@@ -50,58 +51,249 @@ $averageFairway =  $_SESSION['pageData']['avgFairway'];
   </div>
 
     <!-- Content section -->
-    <section class="py-5">
-        <div class="container my-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <!-- Placeholder for Chart.js stat chart -->
-                    <canvas id="golfStatChart" width="400" height="200"></canvas>  <!-- Change the height or width of the chart -->
+  <!-- Content section -->
+  <section class="py-5">
+      <div class="container my-5">
+          <div class="row justify-content-center">
+              <div class="col-lg-8">
+                  <!-- Three vertical columns -->
+                  <div class="row">
+                      <div class="col-md-4">
+                        <!-- Column 1 -->
 
-                    <script>
-                        // Sample data for the chart
-                        var ctx = document.getElementById('golfStatChart').getContext('2d');
-                        var myChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: ['Green (%)', 'Fairway (%)', 'Average Penalties', 'Average Putts'],
-                                datasets: [{
-                                    label: 'Your Golf Score',
-                                    data: <?php echo json_encode([$averageGreen, $averageFairway, $averagePenalties, $averagePutts]); ?>, //change it if needed
-                                    backgroundColor: [
-                                        'rgba(75, 192, 192, 0.5)', // Green color for green
-                                        'rgba(255, 99, 132, 0.5)', // Red color for fairway
-                                        'rgba(255, 206, 86, 0.5)', // Yellow color for Average Penalties
-                                        'rgba(54, 162, 235, 0.5)', // Blue color for Average Putts
-                                    ],
-                                    borderColor: [
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                    ],
-                                    borderWidth: 2
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true,
-                                        max: 100, // Set the maximum value to 100%
-                                    }
-                                },
-                                plugins: {
-                                    legend: {
-                                        display: false,
-                                        onClick: (e) => e.preventDefault(),
-                                    },
-                                }
-                            }
-                        });
-                    </script>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <center>
+                        <table class="table table-bordered"">
+
+                            <tr style="background-color: ForestGreen;">
+                              <th><center>Average Score</center></th>
+                            </tr>
+
+                            <tr>
+                              <td><center><?php echo $_SESSION['pageData']['avgscore'];?></center></td>
+                            </tr>
+
+<!-- if youre reading this, please help me. Alan has me chained up in his basement and he forces me to write css for him. its been 2 days since hes fed me, and im scared. if i dont make it out, tell my wifeand kids i love them-->
+
+                        </table>
+                        </center>
+
+
+                        <!-- Column 1 end -->
+                      </div>
+                      <div class="col-md-4">
+                        <!-- Column 2 -->
+
+
+
+                        <center>
+                                                <table class="table table-bordered">
+
+                        <tr style="background-color: #6CA971;">
+                          <th><center>Total Holes Played</center></th>
+                        </tr>
+
+                                                  <tr>
+                                                    <td><center><?php echo $_SESSION['pageData']['totalHolesPlayed'];?></center></td>
+                                                  </tr>
+
+
+
+                                                </table>
+                                                </center>
+
+
+
+                        <!-- Column 2 end -->
+                      </div>
+                      <div class="col-md-4">
+                        <!-- Column 3 end -->
+
+
+
+                        <center>
+                <table class="table table-bordered"">
+
+                        <tr style="background-color: ForestGreen;">
+                          <th><center>Total Rounds Played</center></th>
+                        </tr>
+
+          <tr>
+         <td><center><?php echo $_SESSION['pageData']['totalRoundsPlayed'];?></center></td>
+         </tr>
+
+
+
+                                                </table>
+                                                </center>
+
+
+
+                        <!-- Column 3 end -->
+                      </div>
+                  </div>
+
+
+
+<!-- column row 2 -->
+
+
+
+
+
+
+
+                <!-- Three vertical columns -->
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                        <!-- Column 1 -->
+
+                                        <center>
+                                        <table class="table table-bordered"">
+
+                <tr style="background-color: #6CA971;">
+                  <th><center>Average Round Score</center></th>
+                </tr>
+
+                                          <tr>
+                                            <td><center><p>9 Holes: <?php echo $_SESSION['pageData']['avg9HoleScore'];?></p><p> 18 Holes: <?php echo $_SESSION['pageData']['avg18HoleScore'];?></p></center></td>
+                                          </tr>
+
+                <!-- if youre reading this, please help me. Alan has me chained up in his basement and he forces me to write css for him. its been 2 days since hes fed me, and im scared. if i dont make it out, tell my wifeand kids i love them-->
+
+                                        </table>
+                                        </center>
+
+
+                                        <!-- Column 1 end -->
+                                      </div>
+                                      <div class="col-md-4">
+                                        <!-- Column 2 -->
+
+
+
+                                        <center>
+                                                                <table class="table table-bordered">
+
+                                        <tr style="background-color: ForestGreen;">
+                                          <th><center>Worst Round Score</center></th>
+                                        </tr>
+
+                                                                  <tr>
+                                                                    <td><center><?php echo $_SESSION['pageData']['worstRound'];?></center></td>
+                                                                  </tr>
+
+
+
+                                                                </table>
+                                                                </center>
+
+
+
+                                        <!-- Column 2 end -->
+                                      </div>
+                                      <div class="col-md-4">
+                                        <!-- Column 3 end -->
+
+
+
+                                        <center>
+                                <table class="table table-bordered"">
+
+                                        <tr style="background-color: #6CA971;">
+                                          <th><center>Best Round Score</center></th>
+                                        </tr>
+
+                          <tr>
+                         <td><center><?php echo $_SESSION['pageData']['bestRound'];?></center></td>
+                         </tr>
+
+
+
+                                                                </table>
+                                                                </center>
+
+                                        </div>
+                                                      <div class="col-md-15">
+                                                        <!-- Column 3 end -->
+
+
+
+                                                        <center>
+                                                <table class="table table-bordered"">
+
+                                                        
+
+                                          
+
+
+
+                                                                                </table>
+                                                                                </center>
+
+
+                                        <!-- Column 3 end -->
+                                      </div>
+                                  </div>
+
+
+
+
+
+
+
+
+<!-- column row 2 end
+
+                  <hr>
+                  <!-- Placeholder for Chart.js stat chart -->
+                  <canvas id="golfStatChart" width="400" height="200"></canvas> <!-- Change the height or width of the chart -->
+
+                  <script>
+                      // Sample data for the chart
+                      var ctx = document.getElementById('golfStatChart').getContext('2d');
+                      var myChart = new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                              labels: ['Green (%)', 'Fairway (%)', 'Average Penalties', 'Average Putts'],
+                              datasets: [{
+                                  label: 'Your Golf Score',
+                                  data: <?php echo json_encode([$averageGreen, $averageFairway, $averagePenalties, $averagePutts]); ?>, //change it if needed
+                                  backgroundColor: [
+                                      'rgba(60, 200, 113, 0.5)', // Light green color for green
+                                      'rgba(120, 192, 120, 0.5)', // Lighter green color for fairway
+                                      'rgba(60, 200, 113, 0.5)', // Lightest green color for Average Penalties
+                                      'rgba(120, 192, 120, 0.5)', // Lightest green color for Average Putts
+                                  ],
+                                  borderColor: [
+                                      'rgba(120, 192, 120, 1)',
+                                      'rgba(60, 179, 113, 1)',
+                                      'rgba(120, 192, 120, 1)',
+                                      'rgba(60, 179, 113, 1)',
+                                  ],
+                                  borderWidth: 2
+                              }]
+                          },
+                          options: {
+                              scales: {
+                                  y: {
+                                      beginAtZero: true,
+                                      max: 100, // Set the maximum value to 100%
+                                  }
+                              },
+                              plugins: {
+                                  legend: {
+                                      display: false,
+                                      onClick: (e) => e.preventDefault(),
+                                  },
+                              }
+                          }
+                      });
+                  </script>
+              </div>
+          </div>
+      </div>
+  </section>
+
 
   <script>
       document.addEventListener('DOMContentLoaded', function() {

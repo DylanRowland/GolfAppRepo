@@ -29,13 +29,15 @@ roundID,
 userID, 
 courseID,
 datePlayed,
-totalScore
+totalScore,
+numberOfHoles
 ) VALUES (
 :roundID, 
 :userID, 
 :courseID,
 :datePlayed,
-:totalScore
+:totalScore,
+:numberOfHoles
 )';
 
 // Bind the placeholders to the user values.
@@ -45,6 +47,7 @@ $stmt->bindParam(':userID', $_SESSION['user']['uid']);
 $stmt->bindParam(':courseID', $_SESSION['pageData']['courses']);
 $stmt->bindParam(':datePlayed', $_SESSION['pageData']['datePlayed']);
 $stmt->bindParam(':totalScore', $totalScore); // can not be a value, must be a variable.
+$stmt->bindParam(':numberOfHoles', $_SESSION['pageData']['holesPlayed']);
 
 // Execute the query
 $stmt->execute(); // add user to DB
@@ -54,7 +57,7 @@ $_SESSION['pageData']['roundID'] = $newRoundID;
 
 
 
-$sql = "INSERT INTO GA_holesPlayed (userID, roundID, courseID) VALUES (:userID, :roundID, :courseID)";
+$sql = "INSERT INTO GA_holesPlayed (userID, roundID, courseID, holeNumber) VALUES (:userID, :roundID, :courseID, :holeNumber)";
 
 // Get the last inserted ID from the database
 $stmt_max_id = $pdo->query("SELECT MAX(HolePlayedID) AS max_id FROM GA_holesPlayed");
@@ -63,6 +66,7 @@ $max_id = $stmt_max_id->fetch(PDO::FETCH_ASSOC)['max_id'];
 // If there are no existing IDs, start from 1, otherwise increment the max ID
 $new_id = ($max_id === null) ? 1 : $max_id + 1;
 $i = 0;
+$holeNum = 1;
 
 // Initialize an array to store the generated IDs
 $_SESSION['pageData']['savedHoleIds'] = array();
@@ -76,6 +80,7 @@ while ($i < $_SESSION['pageData']['holesPlayed']) {
     $stmt->bindParam(':userID', $_SESSION['user']['uid']);
     $stmt->bindParam(':roundID', $_SESSION['pageData']['roundID']);
     $stmt->bindParam(':courseID', $_SESSION['pageData']['courses']);
+    $stmt->bindParam(':holeNumber', $holeNum);
 
     // Execute the statement
     $stmt->execute();
@@ -88,6 +93,7 @@ while ($i < $_SESSION['pageData']['holesPlayed']) {
 
     // Increment the loop counter
     $i++;
+    $holeNum++;
 }
 
 // echo '<pre>';
