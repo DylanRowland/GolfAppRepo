@@ -1,4 +1,4 @@
-<?php  require($_SERVER['DOCUMENT_ROOT'] . '/functions.php');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/functions.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/template/TemplateFunctions.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -67,7 +67,7 @@ echo '<img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150
 <h6 class="text-center"> Location: <?php echo $_SESSION['pageData']['location']; ?><br> </h6>
   
 
- <h6 class="text-center"><button class="btn btn-primary btn-block">Edit</button>
+  <h6 class="text-center"><a href="/editProfile.php"><button class="btn btn-primary btn-block">Edit</button></a></h6>
  <div class="mt-4">
    <h5>Bio:</h5>
    <?php echo $_SESSION['pageData']['bio']; ?></p>   
